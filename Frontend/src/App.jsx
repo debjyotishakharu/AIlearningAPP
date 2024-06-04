@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import HomePage from "./pages/home-page";
 import SkillPlan from "./pages/skill-plan";
+import Auth from "./components/auth";
 
 function App() {
   const action = useNavigationType();
@@ -52,6 +53,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/skill-plan" element={<SkillPlan />} />
+      <Route path="/auth" element={<Auth />} />
     </Routes>
   );
 }
