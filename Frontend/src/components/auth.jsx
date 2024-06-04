@@ -36,9 +36,10 @@ const Auth = ({ className = "" }) => {
             <input
               className="self-stretch rounded-lg bg-white box-border flex flex-row items-start justify-start py-[3px] px-[15px] max-w-full border-[1px] border-solid border-gainsboro-200"
               required={true}
-              type="file"
+              type="text"
+              placeholder="Enter Email ID"
             />
-            <button className="cursor-pointer [border:none] py-0 px-5 bg-black1 self-stretch rounded-lg flex flex-row items-start justify-center hover:bg-gray-1">
+            <button className="cursor-pointer [border:none] py-0 px-5 bg-black text-white self-stretch rounded-lg flex flex-row items-start justify-center hover:bg-gray-500">
               <div className="relative text-base leading-[150%] font-medium font-small-text text-white text-left">
                 Sign up with email
               </div>
@@ -55,18 +56,18 @@ const Auth = ({ className = "" }) => {
               <div className="self-stretch h-px relative bg-gainsboro-100" />
             </div>
           </div>
-          <div className="self-stretch rounded-lg bg-whitesmoke flex flex-row items-start justify-between py-0 px-3.5 gap-[20px] text-left">
-            <div className="flex flex-col items-start justify-start pt-0.5 px-0 pb-0">
+          <button className="cursor-pointer border-none py-2 px-5 bg-black text-white self-stretch rounded-lg flex flex-row items-center justify-center hover:bg-gray-500">
+            <div className="flex flex-row items-center gap-3">
               <img
-                className="w-5 h-5 relative overflow-hidden shrink-0"
-                alt=""
-                src="/google.svg"
+                className="w-5 h-5"
+                alt="Google logo"
+                src="/google-pay.svg"
               />
+              <div className="font-medium">
+                Google
+              </div>
             </div>
-            <div className="relative leading-[150%] font-medium inline-block min-w-[55px]">
-              Google
-            </div>
-          </div>
+          </button>
           <div className="self-stretch relative leading-[150%] text-gray">
             <span>{`By clicking continue, you agree to our `}</span>
             <span className="text-black1">Terms of Service</span>
