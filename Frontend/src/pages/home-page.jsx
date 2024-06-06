@@ -27,7 +27,7 @@ const HomePage = () => {
                 className="w-[333px] relative rounded-xl max-h-full object-cover max-w-full mq1400:flex-1"
                 loading="lazy"
                 alt=""
-                src="/-7e93f9e348ff4cceb405f110608462ae-1@2x.png"
+                src="/Test.png"
               />
             </div>
           </div>
@@ -37,7 +37,7 @@ const HomePage = () => {
                 className="h-[306px] w-[317.7px] relative rounded-xl object-cover min-h-[306px]"
                 loading="lazy"
                 alt=""
-                src="/-b965cf3027b545fe90d96c9ecd800ca8-1@2x.png"
+                src="/test2.png"
               />
               <div className="w-[943px] flex flex-col items-end justify-center py-[74px] pr-0 pl-[30px] box-border gap-[24px] max-w-full">
                 <h1 className="m-0 relative text-inherit leading-[110%] font-semibold font-inherit inline-block max-w-full mq450:text-5xl mq450:leading-[26px] mq825:text-13xl mq825:leading-[35px]">
