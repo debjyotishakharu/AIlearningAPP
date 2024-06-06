@@ -11,22 +11,20 @@ const HeaderNavigation = ({ className = "" }) => {
 
   return (
     <header
-      className={`self-stretch bg-white overflow-hidden flex flex-row items-start justify-between py-[22px] px-[46px] gap-[20px] text-left text-29xl text-black font-righteous mq825:flex-wrap mq825:pl-[23px] mq825:pr-[23px] mq825:box-border ${className}`}
+      className={`self-stretch bg-white overflow-hidden flex flex-row items-center justify-between py-[22px] px-[46px] gap-[20px] text-left text-29xl text-black font-righteous mq825:pl-[23px] mq825:pr-[23px] mq825:box-border ${className}`}
     >
-      <div className="w-[297px] overflow-hidden shrink-0 flex flex-row items-start justify-between min-w-[297px] mq825:flex-1">
+      <div className="flex flex-row items-center justify-start gap-4">
         <img
-          className="h-[108px] w-[108px] relative object-cover shrink-0"
+          className="h-[120px] w-[60px] object-cover"
           loading="lazy"
-          alt=""
+          alt="SkillSage logo"
           src="/nobg3-1@2x.png"
         />
-        <div className="overflow-hidden flex flex-col items-center justify-end pt-6 px-0 pb-0 z-[1]">
-          <h1 className="m-0 relative text-inherit leading-[150%] font-normal font-inherit">
-            SkillSage
-          </h1>
-        </div>
+        <h1 className="text-2xl font-righteous m-0">
+          SkillSage
+        </h1>
       </div>
-      <div className="overflow-hidden flex flex-col items-center justify-end pt-[34px] px-0 pb-0 text-base text-white font-heading">
+      <div className="flex flex-row items-center justify-end text-base text-white font-heading">
         <div
           className="flex flex-row items-center justify-end cursor-pointer"
           onClick={onItemsContainerClick}

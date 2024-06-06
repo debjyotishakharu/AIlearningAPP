@@ -21,26 +21,24 @@ const Skills = ({ className = "" }) => {
         </div>
       </div>
       <div className="self-stretch overflow-hidden flex flex-row flex-wrap items-start justify-between pt-0 pb-4 pr-[53px] pl-[33px] gap-[20px] text-left text-base mq825:pr-[26px] mq825:box-border">
-        <div className="rounded-11xl bg-lightcyan flex flex-row items-center justify-center py-[3px] px-[26px] whitespace-nowrap">
-          <div className="relative leading-[150%] font-medium inline-block min-w-[127px]">
+        <button className="cursor-pointer [border:none] pt-[22px] pb-[20.2px] pr-5 pl-[21px] bg-white w-[343px] rounded-11xl flex flex-row items-start justify-center box-border relative whitespace-nowrap max-w-full hover:bg-gainsboro-100">
+          <div className="h-full w-full absolute !m-[0] top-[0px] right-[0px] bottom-[0px] left-[0px] rounded-11xl bg-aliceblue" />
+          <b className="relative text-base tracking-[0.02em] uppercase font-bold font-red-hat-display text-gray-1 text-center z-[1]">
             UI/UX Developer
-          </div>
-        </div>
-        <div className="rounded-11xl bg-lightcyan flex flex-row items-center justify-center py-[3px] px-8 whitespace-nowrap">
-          <div className="relative leading-[150%] font-medium inline-block min-w-[116px]">
-            ML\AI Engineer
-          </div>
-        </div>
-        <div className="rounded-11xl bg-lightcyan flex flex-row items-center justify-center py-[3px] px-3.5 whitespace-nowrap">
-          <div className="relative leading-[150%] font-medium">
+          </b>
+        </button>
+        <button className="cursor-pointer [border:none] pt-[22px] pb-[20.2px] pr-5 pl-[21px] bg-white w-[343px] rounded-11xl flex flex-row items-start justify-center box-border relative whitespace-nowrap max-w-full hover:bg-gainsboro-100">
+          <div className="h-full w-full absolute !m-[0] top-[0px] right-[0px] bottom-[0px] left-[0px] rounded-11xl bg-aliceblue" />
+          <b className="relative text-base tracking-[0.02em] uppercase font-bold font-red-hat-display text-gray-1 text-center z-[1]">
+            ML/AI Engineer
+          </b>
+        </button>
+        <button className="cursor-pointer [border:none] pt-[22px] pb-[20.2px] pr-5 pl-[21px] bg-white w-[343px] rounded-11xl flex flex-row items-start justify-center box-border relative whitespace-nowrap max-w-full hover:bg-gainsboro-100">
+          <div className="h-full w-full absolute !m-[0] top-[0px] right-[0px] bottom-[0px] left-[0px] rounded-11xl bg-aliceblue" />
+          <b className="relative text-base tracking-[0.02em] uppercase font-bold font-red-hat-display text-gray-1 text-center z-[1]">
             Software Developer
-          </div>
-        </div>
-        <div className="rounded-11xl bg-lightcyan flex flex-row items-center justify-center py-[3px] px-14">
-          <div className="relative leading-[150%] font-medium inline-block min-w-[67px]">
-            Scientist
-          </div>
-        </div>
+          </b>
+        </button>
       </div>
     </div>
   );
