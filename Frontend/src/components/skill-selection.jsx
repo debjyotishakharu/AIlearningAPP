@@ -21,7 +21,7 @@ const SkillSelection = ({ className = "" }) => {
         </div>
       </div>
       <h1 className="m-0 self-stretch relative text-21xl tracking-[0.02em] uppercase font-bold font-red-hat-display text-center mq450:text-5xl mq1025:text-13xl">
-        Plan your skill
+        Plan Your Skill
       </h1>
     </section>
   );
