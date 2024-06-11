@@ -9,11 +9,15 @@ const HeaderNavigation = ({ className = "" }) => {
     navigate("/auth");
   }, [navigate]);
 
+  const onLogoClick = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
   return (
     <header
       className={`self-stretch bg-white overflow-hidden flex flex-row items-center justify-between py-[22px] px-[46px] gap-[20px] text-left text-29xl text-black font-righteous mq825:pl-[23px] mq825:pr-[23px] mq825:box-border ${className}`}
     >
-      <div className="flex flex-row items-center justify-start gap-4">
+      <div className="flex flex-row items-center justify-start gap-4" onClick={onLogoClick} style={{ cursor: "pointer" }}>
         <img
           className="h-[120px] w-[60px] object-cover"
           loading="lazy"
