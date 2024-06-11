@@ -20,11 +20,11 @@ const HeaderNavigation = ({ className = "" }) => {
           alt="SkillSage logo"
           src="/nobg3-1@2x.png"
         />
-        <h1 className="text-2xl font-righteous m-0">
+        <h1 className="text-29xl font-righteous m-0">
           SkillSage
         </h1>
       </div>
-      <div className="flex flex-row items-center justify-end text-base text-white font-heading">
+      {/* <div className="flex flex-row items-center justify-end text-base text-white font-heading">
         <div
           className="flex flex-row items-center justify-end cursor-pointer"
           onClick={onItemsContainerClick}
@@ -35,7 +35,7 @@ const HeaderNavigation = ({ className = "" }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 };
