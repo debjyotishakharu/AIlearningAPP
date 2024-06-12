@@ -34,7 +34,7 @@ const HomePage = () => {
           <div className="self-stretch overflow-hidden flex flex-col items-center justify-center py-0 px-[30px] box-border max-w-full text-right mq450:gap-[27px] mq825:gap-[54px]">
             <div className="w-[1380px] overflow-hidden flex flex-row items-start justify-between py-0 pr-[60px] pl-10 box-border max-w-full gap-[19.28px] mq1400:flex-wrap mq1400:pr-[30px] mq1400:box-border">
               <img
-                className="h-[306px] w-[317.7px] relative rounded-xl object-cover min-h-[306px]"
+                className="w-[333px] relative rounded-xl max-h-full object-cover max-w-full mq1400:flex-1"
                 loading="lazy"
                 alt=""
                 src="/test2.png"
