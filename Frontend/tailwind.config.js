@@ -47,6 +47,10 @@ module.exports = {
       "29xl": "48px",
       "19xl": "38px",
       inherit: "inherit",
+      "xxs": "10px",
+      "xs": "12px",
+      "sm": "14px",
+      "base": "16px"
     },
     screens: {
       mq1400: {
