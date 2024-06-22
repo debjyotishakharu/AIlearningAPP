@@ -13,10 +13,10 @@ const HomePage = () => {
             <div className="w-[1360px] overflow-hidden flex flex-row items-center justify-between py-0 pr-[50px] pl-[30px] box-border max-w-full gap-[20px] mq1400:flex-wrap mq1400:pr-[25px] mq1400:box-border">
               <div className="w-[916px] flex flex-col items-start justify-center py-5 px-0 box-border gap-[24px] min-w-[916px] max-w-full lg:min-w-full mq1400:flex-1">
                 <h1 className="m-0 w-[691px] relative text-inherit leading-[110%] font-semibold font-inherit inline-block max-w-full mq450:text-5xl mq450:leading-[26px] mq825:text-13xl mq825:leading-[35px]">
-                  What is SkillSage?
+                  What is Knowthentic?
                 </h1>
                 <div className="self-stretch relative text-xl leading-[150%] text-gray text-justify mq450:text-base mq450:leading-[24px]">
-                  SkillSage is an AI-powered learning platform that helps you
+                  Knowthentic is an AI-powered learning platform that helps you
                   discover the skills you need and creates a personalized
                   roadmap to achieve them. We recommend relevant courses,
                   articles, and tutorials - all in one place, so you can learn
