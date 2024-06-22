@@ -21,11 +21,11 @@ const HeaderNavigation = ({ className = "" }) => {
         <img
           className="h-[120px] w-[60px] object-cover"
           loading="lazy"
-          alt="SkillSage logo"
+          alt="Knowthentic logo"
           src="/nobg3-1@2x.png"
         />
         <h1 className="text-29xl font-righteous m-0">
-          SkillSage
+        Knowthentic
         </h1>
       </div>
       {/* <div className="flex flex-row items-center justify-end text-base text-white font-heading">

@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SkillSelection from "../components/header-navigation";
 import PropTypes from "prop-types";
 
 const SkillPlan = () => {
   const [proficiency, setProficiency] = useState("");
   const [selectedPace, setSelectedPace] = useState("");
+  const [skill, setSkill] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleProficiencyChange = (e) => {
     setProficiency(e.target.value);
@@ -14,10 +18,37 @@ const SkillPlan = () => {
     setSelectedPace(e.target.value);
   };
 
+  const handleSkillChange = (e) => {
+    setSkill(e.target.value);
+  };
+
+  const handleGenerateRoadmap = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/generate-roadmap/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ skill, proficiency, selectedPace }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to generate roadmap");
+      }
+
+      const data = await response.json();
+      navigate("/roadmap", { state: { roadmap: data } });
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="w-full bg-white flex flex-col items-center justify-start py-5 px-2 gap-8">
       <SkillSelection />
-      <form className="w-full max-w-[800px] flex flex-col items-center gap-4 px-2 md:px-4">
+      <form className="w-full max-w-[800px] flex flex-col items-center gap-4 px-2 md:px-4" onSubmit={handleGenerateRoadmap}>
         <div className="w-full flex flex-col items-center gap-3">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center font-sans">
             What skill do you want to learn?
@@ -27,6 +58,8 @@ const SkillPlan = () => {
               className="w-full border-none outline-none text-xs sm:text-sm md:text-base bg-transparent text-gray-700 font-sans"
               placeholder="e.g., software engineer"
               type="text"
+              value={skill}
+              onChange={handleSkillChange}
             />
           </div>
         </div>
@@ -91,6 +124,11 @@ const SkillPlan = () => {
             Generate Roadmap
           </button>
         </div>
+        {error && (
+          <div className="w-full flex justify-center text-red-500">
+            {error}
+          </div>
+        )}
       </form>
     </div>
   );
