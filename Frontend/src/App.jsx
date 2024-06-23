@@ -27,19 +27,19 @@ function App() {
 
     switch (pathname) {
       case "/":
-        title = "Home - My Project";
-        metaDescription = "Welcome to the home page of My Project.";
+        title = "Knowthentic";
+        metaDescription = "Welcome to Knowthentic.";
         break;
       case "/skill-plan":
-        title = "Skill Plan - My Project";
+        title = "Knowthentic";
         metaDescription = "Plan your skill learning path with My Project.";
         break;
       case "/roadmap":
-        title = "Roadmap - My Project";
+        title = "Knowthentic";
         metaDescription = "View your generated learning roadmap.";
         break;
       case "/auth":
-        title = "Auth - My Project";
+        title = "Knowthentic";
         metaDescription = "Authenticate yourself to use My Project.";
         break;
       default:
