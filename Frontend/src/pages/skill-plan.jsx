@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import SkillSelection from "../components/header-navigation";
-import PropTypes from "prop-types";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import SkillSelection from '../components/header-navigation';
+import PropTypes from 'prop-types';
 
 const SkillPlan = () => {
-  const [proficiency, setProficiency] = useState("");
-  const [selectedPace, setSelectedPace] = useState("");
-  const [skill, setSkill] = useState("");
-  const [error, setError] = useState(null);
+  const [proficiency, setProficiency] = useState('');
+  const [selectedPace, setSelectedPace] = useState('');
+  const [skillToLearn, setSkillToLearn] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleProficiencyChange = (e) => {
@@ -19,36 +19,53 @@ const SkillPlan = () => {
   };
 
   const handleSkillChange = (e) => {
-    setSkill(e.target.value);
+    setSkillToLearn(e.target.value);
   };
 
-  const handleGenerateRoadmap = async (e) => {
-    e.preventDefault();
-
+  const handleGenerateRoadmap = async () => {
     try {
-      const response = await fetch("/api/generate-roadmap/", {
-        method: "POST",
+      const response = await fetch('/api/generate-roadmap/', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCsrfToken(),  // Include CSRF token
         },
-        body: JSON.stringify({ skill, proficiency, selectedPace }),
+        body: JSON.stringify({
+          skill: skillToLearn,
+          proficiency: proficiency,
+          learning_pace: selectedPace,
+        }),
+        credentials: 'include',  // Include credentials for session authentication
       });
 
       if (!response.ok) {
-        throw new Error("Failed to generate roadmap");
+        throw new Error('Network response was not ok');
       }
 
       const data = await response.json();
-      navigate("/roadmap", { state: { roadmap: data } });
+      navigate('/roadmap', { state: { roadmap: data.roadmap } });
     } catch (error) {
-      setError(error.message);
+      console.error('Failed to fetch:', error);
+      setErrorMessage('Failed to fetch roadmap. Please try again.');
     }
+  };
+
+  const getCsrfToken = () => {
+    const name = 'csrftoken';
+    const cookieValue = document.cookie.split('; ').find(row => row.startsWith(name)).split('=')[1];
+    return cookieValue;
   };
 
   return (
     <div className="w-full bg-white flex flex-col items-center justify-start py-5 px-2 gap-8">
       <SkillSelection />
-      <form className="w-full max-w-[800px] flex flex-col items-center gap-4 px-2 md:px-4" onSubmit={handleGenerateRoadmap}>
+      <form
+        className="w-full max-w-[800px] flex flex-col items-center gap-4 px-2 md:px-4"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleGenerateRoadmap();
+        }}
+      >
         <div className="w-full flex flex-col items-center gap-3">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center font-sans">
             What skill do you want to learn?
@@ -58,7 +75,7 @@ const SkillPlan = () => {
               className="w-full border-none outline-none text-xs sm:text-sm md:text-base bg-transparent text-gray-700 font-sans"
               placeholder="e.g., software engineer"
               type="text"
-              value={skill}
+              value={skillToLearn}
               onChange={handleSkillChange}
             />
           </div>
@@ -68,11 +85,11 @@ const SkillPlan = () => {
             Choose Your Current Proficiency
           </h2>
           <div className="w-full max-w-[500px] flex flex-wrap items-center justify-between gap-3">
-            {["Beginner", "Medium", "Advanced"].map((level, index) => (
+            {['Beginner', 'Medium', 'Advanced'].map((level, index) => (
               <label
                 key={index}
                 className={`flex-1 min-w-[100px] cursor-pointer p-2 sm:p-3 rounded-lg border border-black shadow-sm flex items-center justify-center transition ${
-                  proficiency === level ? "bg-blue-500 text-white" : "bg-white text-black"
+                  proficiency === level ? 'bg-blue-500 text-white' : 'bg-white text-black'
                 } font-sans text-xs sm:text-sm md:text-base`}
               >
                 <input
@@ -96,11 +113,11 @@ const SkillPlan = () => {
             Choose Your Learning Pace
           </h2>
           <div className="w-full max-w-[500px] flex flex-wrap items-center justify-between gap-3">
-            {["Slow", "Medium", "Fast"].map((pace, index) => (
+            {['Slow', 'Medium', 'Fast'].map((pace, index) => (
               <label
                 key={index}
                 className={`flex-1 min-w-[100px] cursor-pointer p-2 sm:p-3 rounded-lg border border-black shadow-sm flex items-center justify-center transition ${
-                  selectedPace === pace ? "bg-blue-500 text-white" : "bg-white text-black"
+                  selectedPace === pace ? 'bg-blue-500 text-white' : 'bg-white text-black'
                 } font-sans text-xs sm:text-sm md:text-base`}
               >
                 <input
@@ -120,13 +137,16 @@ const SkillPlan = () => {
           </div>
         </div>
         <div className="w-full flex justify-center">
-          <button className="bg-blue-600 text-white px-6 py-2 sm:px-8 sm:py-3 md:px-10 md:py-4 rounded-lg hover:bg-blue-700 transition font-sans font-medium text-sm sm:text-base md:text-lg">
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-6 py-2 sm:px-8 sm:py-3 md:px-10 md:py-4 rounded-lg hover:bg-blue-700 transition font-sans font-medium text-sm sm:text-base md:text-lg"
+          >
             Generate Roadmap
           </button>
         </div>
-        {error && (
-          <div className="w-full flex justify-center text-red-500">
-            {error}
+        {errorMessage && (
+          <div className="text-red-500 mt-4 text-sm sm:text-base md:text-lg font-sans">
+            {errorMessage}
           </div>
         )}
       </form>

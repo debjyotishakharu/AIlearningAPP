@@ -32,7 +32,7 @@ function App() {
         break;
       case "/skill-plan":
         title = "Knowthentic";
-        metaDescription = "Plan your skill learning path with My Project.";
+        metaDescription = "Plan your skill learning path with Knowthentic.";
         break;
       case "/roadmap":
         title = "Knowthentic";
@@ -40,11 +40,11 @@ function App() {
         break;
       case "/auth":
         title = "Knowthentic";
-        metaDescription = "Authenticate yourself to use My Project.";
+        metaDescription = "Authenticate yourself to use Knowthentic.";
         break;
       default:
-        title = "My Project";
-        metaDescription = "Welcome to My Project.";
+        title = "Knowthentic";
+        metaDescription = "Welcome to Knowthentic.";
         break;
     }
 
