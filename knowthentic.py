@@ -6,8 +6,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 
-os.environ["GROQ_API_KEY"] = "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"
-os.environ["TAVILY_API_KEY"] = "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"
+os.environ["GROQ_API_KEY"] = "Your-Groq-APIkey"
+os.environ["TAVILY_API_KEY"] = "Your-Tavily-APIkey"
 
 llm = init_chat_model("llama3-8b-8192", model_provider="groq")
 retriever = TavilySearchAPIRetriever()
