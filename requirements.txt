@@ -5,3 +5,4 @@ uvicorn
 langchain-groq
 tavily-python
 python-multipart
+fpdf

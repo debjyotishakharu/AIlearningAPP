@@ -5,14 +5,45 @@ from langchain_community.tools import TavilySearchResults
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
+from fpdf import FPDF
 
-os.environ["GROQ_API_KEY"] = "Your-Groq-APIkey"
-os.environ["TAVILY_API_KEY"] = "Your-Tavily-APIkey"
+# Ensure roadmapDIR exists
+os.makedirs("roadmapDIR", exist_ok=True)
+
+os.environ["GROQ_API_KEY"] = "Your key here"
+os.environ["TAVILY_API_KEY"] = "Your key here"
 
 llm = init_chat_model("llama3-8b-8192", model_provider="groq")
 retriever = TavilySearchAPIRetriever()
 
-
+def generate_pdf(content: str, filename: str):
+    """Generates a PDF from the given content with proper text encoding and text wrapping."""
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    
+    max_width = 190  # Adjust for proper margins
+    
+    for line in content.split("\n"):
+        encoded_line = line.encode("latin-1", "replace").decode("latin-1")  # Handle non-ASCII characters
+        if len(encoded_line) > 90:  # Approximate character limit per line
+            words = encoded_line.split()
+            new_line = ""
+            for word in words:
+                if pdf.get_string_width(new_line + word) < max_width:
+                    new_line += word + " "
+                else:
+                    pdf.cell(max_width, 10, txt=new_line.strip(), ln=True, align='L')
+                    new_line = word + " "
+            if new_line:
+                pdf.cell(max_width, 10, txt=new_line.strip(), ln=True, align='L')
+        else:
+            pdf.cell(max_width, 10, txt=encoded_line, ln=True, align='L')
+    
+    pdf_path = os.path.join("roadmapDIR", filename)
+    pdf.output(pdf_path, "F")
+    return pdf_path
 
 #USING TavilySearchAPIRetriever
 def knowthentic_service_one(skill,proficiency,pace):
@@ -36,7 +67,10 @@ def knowthentic_service_one(skill,proficiency,pace):
 
         roadmap=chain.invoke({"question": prompttemplate})
 
-        return roadmap
+        filename="roadmap_v1.pdf"
+        pdf_path=generate_pdf(roadmap,filename)
+
+        return {"Roadmap":roadmap, "FilePath": pdf_path}
     except Exception as e:
         print("failed at knowthentic_service")
         print(str(e))
@@ -100,7 +134,11 @@ def knowthentic_service_two(skill,proficiency,pace):
 
         response=answer.content
 
-        return response
+        filename="roadmap_v2.pdf"
+
+        pdf_path=generate_pdf(response,filename)
+
+        return {"Roadmap":response, "FilePath": pdf_path}
     
     except Exception as e:
         print("failed at knowthentic_service_two")
